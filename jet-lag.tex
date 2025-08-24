@@ -1,0 +1,79 @@
+\documentclass{book}
+\usepackage[czech]{babel}
+\usepackage{hyperref}
+
+\title{Pravidla her Jet Lag}
+\author{Jáchym Mierva}
+\date{2025}
+
+\newenvironment{reasoning}{\begin{small}\itshape}{\end{small}}
+
+\def\timehiding{45 minut}
+\def\hidingzoneradius{200 metrů}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Hide And Seek: Praha}
+
+\section{Příprava hry}
+
+\subsection{Definice herního plánu}\label{herní plán}
+
+\textbf{Herní plán} tvoří právě všechny dopravní prostředky Pražské MHD poháněné výhradně elektřinou a operující v tarifním pásmu P. Konkrétně jimi jsou
+\begin{itemize}
+	\item metro,
+	\item tramvaj,
+	\item trolejbus,
+	\item lanovka a
+	\item vlak v úseku, na kterém je platný roční kupón PID pro pásmo P.
+\end{itemize}
+V průběhu hry nesmí hráči používat žádné jiné dopravní prostředky.
+
+Hráči začínají hru u vstupu do stanice metra Florenc.
+
+\begin{reasoning}
+	Určitě chceme začínat ve velkém dopravním uzlu, tj. v jedné z přestupních stanic metra. Z nich jsme vybrali Florenc, protože metro A všichni docela známe a bude zajímavé mít možnosti jet někam, kde to tolik neznáme. Navíc prochází Florencí mnoho tramvajových linek a zároveň je poblíž Masarykova nádraží.
+\end{reasoning}
+
+\subsection{Rozdělení rolí}
+
+Je určen jeden z hráčů, který bude \textbf{skrývačem}. Ostatní hráči zaujmou roli \textbf{hledačů}. Při větším počtu hráčů se hledači mohou rozdělit do \textbf{týmů} (po dvou až třech osobách), pro modifikaci pravidel v takovém případě viz sekci \ref(týmy).
+
+Skrývač obdrží \textbf{balíček karet} (viz sekci \ref{karty}), každý tým hledačů má mapu herního plánu.
+
+\section{První fáze: skrývání}
+
+Skrývač má \textbf{\timehiding} na to, aby se přesunul na pozici dle libosti. Hledači během této doby nesmí získat žádnou informaci o jeho poloze. V okamžiku \timehiding po začátku skrývání je deklarována \textbf{zóna skrývání} jako vertikální válec o poloměru podstavy \textbf{\hidingzoneradius}, jehož osa prochází aktuální polohou skrývače. Tato zóna \textbf{musí} obsahovat alespoň jednu zastávku či stanici některého z povolených dopravních prostředků. (Přesněji, musí obsahovat netriviální část alespoň jednoho nástupiště.)
+
+Od této chvíle nemá skrývač povoleno opustit svou zónu skrývání.
+
+\section{Druhá fáze: hledání}
+
+Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyráží ze stejné počáteční pozice jako skrývač a jejich cílem je co nejdříve skrývače fyzicky najít, přičemž po celou dobu má skrývač informaci o jejich aktuální poloze (v přesnosti, kterou technologie dovolí). Informace o jeho poloze mohou získávat kladením \textbf{otázek} z množiny uvedené v sekci \ref{otázky}. Skrývač musí na každou otázku odpovědět, a to \textbf{pravdivě}.
+
+\begin{reasoning}
+	Pohráváme si i s myšlenkou, že by skrývač mohl čas od času lhát. Konkrétně z každých tří (nebo čtyř, bude třeba vyzkoušet) po sobě jdoucích odpovědí by mohla být nejvýše jedna nepravdivá. Více týmů by se uvažovalo odděleně. Za nepravdivou odpověď by skrývač nedostal odměnu.
+\end{reasoning}
+
+Hledači však za každou odpověď, kterou dostanou, zaplatí jistou cenu: dají tím skrývači možnost táhnout karty z balíčku. Počet karet, které táhne, závisí na typu otázky (viz sekci \ref{otázky}). Odpovídá-li skrývač na některou otázku opakovaně, může táhnutí karet provést \textbf{dvakrát}.
+
+Skrývač může karty zahrát kdykoliv, kdy to podmínky na nich napsané dovolí, a to i více karet zároveň. Zahrané karty se odhazují do \textbf{odhazovacího balíčku}. V \textbf{ruce} však může mít \textbf{maximálně 6 karet}. Pokud nastane situace, kdy si do ruky může vzít více karet, než je její kapacita, musí přebývající karty (z ruky či nově získané) okamžitě zahrát či odhodit.
+
+Mezi položením otázky a obdržením odpovědi \textbf{nesmí} hledači klást další otázky.
+
+Vstoupí-li kdykoliv během fáze hledání hledači do zóny skrývání, skrývač se \textbf{nesmí pohybovat}. Může se pak stát, že na některé otázky nedokáže odpovědět. Tuto informaci musí sdělit namísto odpovědi. Přesto si táhne karty. Odejdou-li hledači ze zóny skrývání, může se skrývač opět začít pohybovat.
+
+\section{Množina otázek}\label{otázky}
+
+\section{Balíček karet}\label{karty}
+
+\section{Modifikace pro hru ve více týmech}\label{týmy}
+
+Sdílí množinu otázek, ale navzájem neznají odpovědi. Mohou klást otázky paralelně.
+
+Větší ruka.
+
+\end{document}
