@@ -77,21 +77,27 @@ Hráči začínají hru u vstupu do stanice metra Florenc.
 	Určitě chceme začínat ve velkém dopravním uzlu, tj. v jedné z přestupních stanic metra. Z nich jsme vybrali Florenc, protože metro A všichni docela známe a bude zajímavé mít možnosti jet někam, kde to tolik neznáme. Navíc prochází Florencí mnoho tramvajových linek a zároveň je poblíž Masarykova nádraží.
 \end{reasoning}
 
+\subsection{Určení hrací doby}
+
+Hráči se mohou dohodnout na horním limitu hrací doby. Neskončí-li hra do daného okamžiku, hráči si poznamenají aktuální stav hry (tj. pozice, zónu skrývání, karty v ruce skrývače a aktivní kletby s jejich časovači) a drží jej v tajnosti. Hru pak mohou dohrát v jiný vhodný čas.
+
 \subsection{Rozdělení rolí}
 
-Je určen jeden z hráčů, který bude \textbf{skrývačem}. Ostatní hráči zaujmou roli \textbf{hledačů}. Při větším počtu hráčů se hledači mohou rozdělit do \textbf{týmů} (po dvou až třech osobách), pro modifikaci pravidel v takovém případě viz sekci \ref{týmy}.
+Hra probíhá v několika kolech, jejichž počet hráči určí na začátku hry (a to absolutně či na základě časového limitu). Počet kol by měl být větší či roven počtu hráčů.
 
-Skrývač obdrží \textbf{balíček karet} (viz sekci \ref{karty}), každý tým hledačů má mapu herního plánu.
+Pro každé kolo je určen jeden z hráčů, který bude \textbf{skrývačem}. Ostatní hráči zaujmou roli \textbf{hledačů}. Při větším počtu hráčů se hledači mohou rozdělit do \textbf{týmů} (po dvou až třech osobách), pro modifikaci pravidel v takovém případě viz sekci \ref{týmy}. Rozdělení hráčů by mělo být předem určeno pro všechna kola.
 
-\section{První fáze: skrývání}
+Skrývač prvního kola obdrží \textbf{balíček karet} (viz sekci \ref{karty}), každý tým hledačů má mapu herního plánu.
 
-Skrývač má \textbf{\timehiding/} na to, aby se přesunul na pozici dle libosti. Hledači během této doby nesmí získat žádnou informaci o jeho poloze. V okamžiku \timehiding/ po začátku skrývání je deklarována \textbf{zóna skrývání} jako vertikální válec o poloměru podstavy \textbf{\dist.5mi}, jehož osa prochází aktuální polohou skrývače. Tato zóna \textbf{musí} obsahovat alespoň jednu zastávku či stanici některého z povolených dopravních prostředků. (Přesněji, musí obsahovat netriviální část alespoň jednoho nástupiště.)
+\section{První fáze kola: skrývání}
+
+Skrývač má \textbf{\timehiding/} na to, aby se přesunul na pozici dle libosti. Hledači během této doby nesmí získat žádnou informaci o jeho poloze. V okamžiku \timehiding/ po začátku skrývání je deklarována \textbf{zóna skrývání} jako vertikální válec o poloměru podstavy \textbf{\dist.5mi}, jehož osa prochází aktuální polohou skrývače. Tato zóna \textbf{musí} obsahovat alespoň jednu zastávku či stanici některého z povolených dopravních prostředků. (Přesněji, musí obsahovat alespoň polovinu některého nástupiště.)
 
 Od této chvíle nemá skrývač povoleno opustit svou zónu skrývání.
 
-\section{Druhá fáze: hledání}
+\section{Druhá fáze kola: hledání}
 
-Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyráží ze stejné počáteční pozice jako skrývač a jejich cílem je co nejdříve skrývače fyzicky najít, přičemž po celou dobu má skrývač informaci o jejich aktuální poloze (v přesnosti, kterou technologie dovolí). Informace o jeho poloze mohou získávat kladením \textbf{otázek} z množiny uvedené v sekci \ref{otázky}. Skrývač musí na každou otázku odpovědět do \textbf{\timeanswerquestion/}, a to \textbf{pravdivě}.
+Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyráží ze stejné počáteční pozice jako skrývač a jejich cílem je co nejdříve skrývače fyzicky najít, přičemž ten má po celou dobu informaci o jejich aktuální poloze (v přesnosti, kterou technologie dovolí). Informace o jeho poloze mohou získávat kladením \textbf{otázek} z množiny uvedené v sekci \ref{otázky}. Skrývač musí na každou otázku odpovědět do \textbf{\timeanswerquestion/}, a to \textbf{pravdivě}.
 
 \begin{reasoning}
 	Pohráváme si i s myšlenkou, že by skrývač mohl čas od času lhát. Konkrétně z každých tří (nebo čtyř, bude třeba vyzkoušet) po sobě jdoucích odpovědí by mohla být nejvýše jedna nepravdivá. Více týmů by se uvažovalo odděleně. Za nepravdivou odpověď by skrývač nedostal odměnu.
@@ -103,7 +109,15 @@ Skrývač může karty zahrát kdykoliv, kdy to podmínky na nich napsané dovol
 
 Mezi položením otázky a obdržením odpovědi \textbf{nesmí} hledači klást další otázky.
 
-Vstoupí-li kdykoliv během fáze hledání hledači do zóny skrývání, skrývač se \textbf{nesmí pohybovat}. Může se pak stát, že na některé otázky nedokáže odpovědět. Tuto informaci musí sdělit namísto odpovědi. Přesto si táhne karty. Odejdou-li hledači ze zóny skrývání, může se skrývač opět začít pohybovat.
+Vstoupí-li kdykoliv během fáze hledání hledači do zóny skrývání, skrývač se \textbf{nesmí pohybovat}. Může se pak stát, že na některé otázky nedokáže odpovědět - tuto informaci musí sdělit namísto odpovědi. I přesto si táhne karty. Odejdou-li hledači ze zóny skrývání, může se skrývač opět začít pohybovat.
+
+\section{Konec kola}
+
+Kolo končí ve chvíli, kdy se hledači dotknou skrývače. Hráči si poznamenají celkový čas hledání společně s časovými bonusy, které skrývač v průběhu kola obdržel díky kartám.
+
+Není-li toto poslední kolo hry, okamžitě začíná fáze skrývání dalšího kola. Dosavadní skrývač předá balíček karet novému skrývači a ten začíná svou fázi skrývání na aktuální pozici všech.
+
+Naopak je-li toto kolo poslední, hra končí. Vítězem je hráč, který v roli skrývače dosáhl nejdelšího času ze všech kol.
 
 \section{Množina otázek}\label{otázky}
 
@@ -203,7 +217,7 @@ Tvar nejbližší ulice
 
 \subsection{Časové bonusy}
 
-Tyto karty nelze zahrát. Po skončení hry se k celkovému času přičte hodnota všech časových bonusů, které v tu chvíli drží skrývač v ruce.
+Tyto karty nelze zahrát. Po skončení kola se k celkovému času přičte hodnota všech časových bonusů, které v tu chvíli drží skrývač v ruce.
 
 \begin{cards}
 	\item \card*{Bonus 5 minut}
@@ -239,7 +253,7 @@ Tyto karty nelze zahrát. Po skončení hry se k celkovému času přičte hodno
 
 	\item \card{Curse of the ransom note?}
 
-	\item \card{Citronová kletba}[1] Každý hledač musí najít citrón a připevnit ho na vnější vrstvu oblečení či kůži. Do té doby nesmí položit žádnou otázku. Pokud v celém zbytku hry nastane situace, že se některý z těchto citrónů nedotýká hledače, je ti udělen časový bonus \timecurselemonpenalty/.
+	\item \card{Citronová kletba}[1] Každý hledač musí najít citrón a připevnit ho na vnější vrstvu oblečení či kůži. Do té doby nesmí položit žádnou otázku. Pokud v celém zbytku kola nastane situace, že se některý z těchto citrónů nedotýká hledače, je ti udělen časový bonus \timecurselemonpenalty/.
 
 		\cost odhoď nějakou akční kartu z ruky.
 
@@ -249,7 +263,7 @@ Tyto karty nelze zahrát. Po skončení hry se k celkovému času přičte hodno
 
 	\item \card{Kletba exotické kuchyně}[1] Zahraj ve chvíli, kdy jsi uvnitř restaurace podávající explicitně kuchyni z jistého cizího státu. Hledači pak nesmí položit další otázku do chvíle, kdy najdou restauraci podávající kuchyni ze státu, jehož vzdálenost od České Republiky je větší či rovna.
 
-	\item \card{Kletba vymytého mozku}[1] Vyber tři otázky různých typů. Hledači nesmí do konce hry tyto otázky položit.
+	\item \card{Kletba vymytého mozku}[1] Vyber tři otázky různých typů. Hledači nesmí do konce kola tyto otázky položit.
 
 		\cost odhoď všechny karty z ruky.
 
@@ -270,5 +284,7 @@ Tyto karty nelze zahrát. Po skončení hry se k celkovému času přičte hodno
 Sdílí množinu otázek, ale navzájem neznají odpovědi. Mohou klást otázky paralelně.
 
 Větší ruka.
+
+Jak probíhá konec kola a začátek dalšího?
 
 \end{document}
