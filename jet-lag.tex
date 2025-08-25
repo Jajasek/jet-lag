@@ -1,15 +1,54 @@
 \documentclass{book}
 \usepackage[czech]{babel}
 \usepackage{hyperref}
+\usepackage[inline]{enumitem}
+\usepackage{mathtools}
+\usepackage{wasysym}
+\usepackage{xifthen}
+
+
+\newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
+\newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
+\newenvironment{switch}[1]{\renewcommand{\case}{\ifequals{#1}}}{}
+
+
+\newenvironment{reasoning}{\begin{small}\itshape}{\end{small}}
+\newlist{cards}{itemize}{1}
+\setlist[cards]{label=\ataribox}
+
+\NewDocumentCommand{\card}{smo}{\textbf{#2 (\IfValueTF{#3}{#3}{?}x)\IfBooleanF{#1}{:}}}
+\newcommand{\cost}{\textbf{Cena za seslání: }}
+
+\def\timehiding/{45 minut}  % 3.5h
+\def\timehidingmove/{15 minut}  % 1 h
+\def\timeanswerquestion/{10 minut}  % photo: 15 min
+\def\timecursetravelvisit/{5 minut}  % 10 min
+\def\timecursetravelpenalty/{15 minut}  % 30 min
+\def\timecurselemonpenalty/{30 minut}  % 1 h
+\def\timecursedoorduration/{1 hodinu}  % 3 h
+\def\timecursedoorreattempt/{10 minut}  % 15 min
+\def\timecursegambler/{30 minut}  % 1 h
+\def\dist#1mi{%
+	\begin{switch}{#1}%
+		\case{.25}{100 metrů}%
+		\case{.5}{200 metrů}%
+		\case{1}{350 metrů}%
+		\case{3}{750 metrů}%
+		\case{5}{1 kilometr}%
+		\case{10}{1.5 kilometru}%
+		\case{15}{2 kilometry}%
+		\case{25}{2 kilometry}%
+		\case{50}{3 kilometry}%
+		\case{100}{4 kilometry}%
+	\end{switch}%
+}
+
+
 
 \title{Pravidla her Jet Lag}
 \author{Jáchym Mierva}
 \date{2025}
 
-\newenvironment{reasoning}{\begin{small}\itshape}{\end{small}}
-
-\def\timehiding/{45 minut}
-\def\hidingzoneradius/{200 metrů}
 
 \begin{document}
 
@@ -23,14 +62,14 @@
 \subsection{Definice herního plánu}\label{herní plán}
 
 \textbf{Herní plán} tvoří právě všechny dopravní prostředky Pražské MHD poháněné výhradně elektřinou a operující v tarifním pásmu P. Konkrétně jimi jsou
-\begin{itemize}
+\begin{itemize}[nosep]
 	\item metro,
 	\item tramvaj,
 	\item trolejbus,
 	\item lanovka a
 	\item vlak v úseku, na kterém je platný roční kupón PID pro pásmo P.
 \end{itemize}
-V průběhu hry nesmí hráči používat žádné jiné dopravní prostředky.
+V průběhu hry nesmí hráči používat žádné jiné dopravní prostředky. Zároveň se musí pohybovat pouze na \textbf{veřejných místech}, jež jsou a budou volně přístupná po celou dobu hry. (Toto pravidlo mohou hledači porušit, vyžaduje-li to výslovně kletba, viz sekci \ref{kletby})
 
 Hráči začínají hru u vstupu do stanice metra Florenc.
 
@@ -46,13 +85,13 @@ Skrývač obdrží \textbf{balíček karet} (viz sekci \ref{karty}), každý tý
 
 \section{První fáze: skrývání}
 
-Skrývač má \textbf{\timehiding/} na to, aby se přesunul na pozici dle libosti. Hledači během této doby nesmí získat žádnou informaci o jeho poloze. V okamžiku \timehiding/ po začátku skrývání je deklarována \textbf{zóna skrývání} jako vertikální válec o poloměru podstavy \textbf{\hidingzoneradius/}, jehož osa prochází aktuální polohou skrývače. Tato zóna \textbf{musí} obsahovat alespoň jednu zastávku či stanici některého z povolených dopravních prostředků. (Přesněji, musí obsahovat netriviální část alespoň jednoho nástupiště.)
+Skrývač má \textbf{\timehiding/} na to, aby se přesunul na pozici dle libosti. Hledači během této doby nesmí získat žádnou informaci o jeho poloze. V okamžiku \timehiding/ po začátku skrývání je deklarována \textbf{zóna skrývání} jako vertikální válec o poloměru podstavy \textbf{\dist.5mi}, jehož osa prochází aktuální polohou skrývače. Tato zóna \textbf{musí} obsahovat alespoň jednu zastávku či stanici některého z povolených dopravních prostředků. (Přesněji, musí obsahovat netriviální část alespoň jednoho nástupiště.)
 
 Od této chvíle nemá skrývač povoleno opustit svou zónu skrývání.
 
 \section{Druhá fáze: hledání}
 
-Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyráží ze stejné počáteční pozice jako skrývač a jejich cílem je co nejdříve skrývače fyzicky najít, přičemž po celou dobu má skrývač informaci o jejich aktuální poloze (v přesnosti, kterou technologie dovolí). Informace o jeho poloze mohou získávat kladením \textbf{otázek} z množiny uvedené v sekci \ref{otázky}. Skrývač musí na každou otázku odpovědět, a to \textbf{pravdivě}.
+Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyráží ze stejné počáteční pozice jako skrývač a jejich cílem je co nejdříve skrývače fyzicky najít, přičemž po celou dobu má skrývač informaci o jejich aktuální poloze (v přesnosti, kterou technologie dovolí). Informace o jeho poloze mohou získávat kladením \textbf{otázek} z množiny uvedené v sekci \ref{otázky}. Skrývač musí na každou otázku odpovědět do \textbf{\timeanswerquestion/}, a to \textbf{pravdivě}.
 
 \begin{reasoning}
 	Pohráváme si i s myšlenkou, že by skrývač mohl čas od času lhát. Konkrétně z každých tří (nebo čtyř, bude třeba vyzkoušet) po sobě jdoucích odpovědí by mohla být nejvýše jedna nepravdivá. Více týmů by se uvažovalo odděleně. Za nepravdivou odpověď by skrývač nedostal odměnu.
@@ -68,7 +107,163 @@ Vstoupí-li kdykoliv během fáze hledání hledači do zóny skrývání, skrý
 
 \section{Množina otázek}\label{otázky}
 
+\begin{reasoning}
+	Oficiální verze hry je adaptovaná na celé Japonsko. Musíme tedy zmenšit používané vzdálenosti. Protože však chceme zmenšit oblast end-game docela málo, zatímco celkovou velikost jsme zmenšili hodně, zdá se přirozené namísto lineárního škálování použít logaritmické.
+
+	Původní hra používá vzdálenosti $0.25mi$ až $100mi$, přičemž poloměr zóny skrývání je $0.5mi$. Použijme pro přepočtení vzdáleností funkci
+	\begin{equation*}
+		f_\alpha(x) = e^{\alpha\log(1+x)} - 1,\quad x \in [0, \infty)
+	\end{equation*}
+	pro nějaký faktor $\alpha > 0$. Všimněme si, že pro $\alpha$ splňující $f_\alpha(100mi) = 4km$ (kde $4km$ se zdá býti rozumný poloměr pro největší radar) dostáváme $f_\alpha(0.5mi) \simeq 210m$. To docela dobře odpovídá námi zvolenému poloměru zóny skrývání. Budu tedy používat tuto funkci, se zaokrouhlováním na rozumně použitelné vzdálenosti. (Pozn. dovolím si 1.77km i 2.24km zaokrouhlit na 2km.)
+
+	Existuje však ještě jiný možný myšlenkový pochod. Protože hrajeme na menší ploše, dala by se nad naše hra připodobnit nějakému kratšímu intervalu původní hry, od jistého bodu do konce. V tomto kratším intervalu už jsou rozumně použitelné jen některé otázky z původní hry, konkrétně ty s menšími vzdálenostmi. Dávalo by tedy smysl namísto škálování prostě jen vypustit tu část otázek, jejichž měřítko neodpovídá našemu kontextu. To budiž předmětem debaty.
+
+	Případně je možné zkombinovat oba přístupy.
+\end{reasoning}
+
+\subsection{Porovnávání}
+
+\textbf{Cena:} Skrývač táhne 3 karty, z nichž si jednu vybere a zbytek odhodí.
+
+Odpovědí na každou z otázek tohoto typu je \textbf{ANO či NE}.
+
+Nejbližší metro
+
+Městská část
+
+Linka MHD
+
+\subsection{Měření}
+
+\textbf{Cena:} Skrývač táhne 3 karty, z nichž si jednu vybere a zbytek odhodí.
+
+Vzdálenost k...
+
+Letišti?
+
+Vodnímu toku (či jen Vltava?)
+
+McDonald's
+
+Metro
+
+Dálnice
+
+\subsection{Teploměr}
+
+\textbf{Cena:} Skrývač táhne 2 karty, z nichž si jednu vybere a druhou odhodí.
+
+200m, 1km, 2km, 3km
+
+\subsection{Radar}
+
+\textbf{Cena:} Skrývač táhne 2 karty, z nichž si jednu vybere a druhou odhodí.
+
+100m, 200m, 350m, 750m, 1km, 1.5km, 2km, 3km, 4km, lib.
+
+\subsection{Chapadla}
+
+\textbf{Cena:} Skrývač táhne 4 karty, z nichž si 2 vybere a zbytek odhodí.
+
+Hledači určí poloměr kruhu okolo jejich aktuální pozice a třídu objektů v tomto kruhu, a to z následujícího seznamu možností. Pokud je skrývač v jimi určeném kruhu, sdělí jim, který z těchto objektů je mu nejbližší. Není-li v daném kruhu, tuto skutečnost hledačům sdělí namísto odpovědi.
+
+\dist1mi: kostely, muzea, kina, 
+
+\dist15mi: budovy Matfyzu, smyčky tramvají(?), , 
+
+\subsection{Fotografie}
+
+\textbf{Cena:} Skrývač táhne 2 karty, z nichž si 2 vybere a zbytek odhodí.
+
+Hledači nemají dovoleno pro lokalizaci fotek cíleně používat fotky dostupné v mapách, na internetu apod. Mohou používat vlastní galerii.
+
+\begin{reasoning}
+	Přijde nám, že fotky nám prozradí obecně mnohem více informací než hráčům původní hry, neboť Praha pro nás zdaleka není neznámým místem. Navrhujeme je tedy zdražit na úroveň chapadel, abychom předešli Samovu \uv{Photos are cheap!}.
+\end{reasoning}
+
+Bod země vypadající nejvýše ze schovávačovy současné pozice
+Nejbližší McDonald's, existuje-li takový v zóně skrývání
+nejširší ulice?
+Most
+Lidmi vytvořená struktura vypadající nejvyšší ze zastávky některého z povolených dopravních prostředků, která je schovávačovi v tomto okamžiku nejblíž
+?
+Nejbližší obchod s potravinami
+?
+Lidmi vytvořená struktura vypadající nejvyšší ze schovávačovy současné pozice
+5 budov (musí obsahovat základnu a alespoň jedno patro každé)
+Selfie
+Procházka \dist.5mi, alespoň 4 zatáčky (?, původně 6)
+x
+Strom
+Fotka nahoru
+Tvar nejbližší ulice
+
+
 \section{Balíček karet}\label{karty}
+
+\subsection{Časové bonusy}
+
+Tyto karty nelze zahrát. Po skončení hry se k celkovému času přičte hodnota všech časových bonusů, které v tu chvíli drží skrývač v ruce.
+
+\begin{cards}
+	\item \card*{Bonus 5 minut}
+	\item \card*{Bonus 10 minut}
+	\item \card*{Bonus 15 minut}
+	\item \card*{Bonus 20 minut}
+\end{cards}
+
+\subsection{Akční karty}
+
+\begin{cards}
+	\item \card{Veto} Vyber otázku, která ještě nebyla položena či byla právě nyní položena. Odteď se považuje za již položenou. Pokud jsi tuto kartu zahrál v reakci na položení této otázky, nemusíš na ni odpovědět (přičemž zřejmě nemáš právo na příslušnou odměnu).
+
+	\item \card{Přesun}[1] Zahraj, pokud hledači \textbf{nejsou v zóně skrývání}. Sděl jim svou aktuální pozici a odhoď všechny karty z ruky. Máš nyní \textbf{\timehidingmove/} na to, aby ses libovolně přesunul a deklaroval novou zónu skrývání. Během této doby se hledači nesmí pohnout ani klást otázky. Pokud jsou hledači v dopravním prostředku, musí jej při nejbližší příležitosti opustit.
+
+	\item \card{Odhoď 1, dober si 2}
+
+	\item \card{Odhoď 2, dober si 3}
+\end{cards}
+
+\subsection{Kletby}\label{kletby}
+
+\begin{cards}
+	\item \card{Kletba všímavého spotřebitele}[1] Hledači musí zakoupit produkt či získat vstup na lokaci, na niž viděli reklamu. Tato reklama musí být nalezena v reálném světě (nikoliv na digitálním zařízení hledače) a musí být od samotného produktu či lokace vzdálena alespoň 30m. Dokud není kletba splněna, hledači nesmí položit žádnou otázku.
+
+		\cost následující otázka hledačů je zdarma.
+
+	\item \card{Kletba nezkušeného cestovatele}[1] Hraj, pokud hledači právě necestují dopravním prostředkem. Urči libovolnou veřejně dostupnou lokaci vzdálenou nejvýše \dist.5mi od hledačů. Ti tam musí dojít a strávit tam alespoň \timecursetravelvisit/. Až poté mohou položit další otázku.
+
+		Hledači ti musí z dané lokace přinést nějaký objekt jako \textbf{suvenýr}. Ztratí-li ho předtím, než ti ho předají, je ti udělen časový bonus \timecursetravelpenalty/.
+
+		\cost cílová lokace od tebe musí být dál než aktuální pozice hledačů.
+
+	\item \card{Curse of the ransom note?}
+
+	\item \card{Citronová kletba}[1] Každý hledač musí najít citrón a připevnit ho na vnější vrstvu oblečení či kůži. Do té doby nesmí položit žádnou otázku. Pokud v celém zbytku hry nastane situace, že se některý z těchto citrónů nedotýká hledače, je ti udělen časový bonus \timecurselemonpenalty/.
+
+		\cost odhoď nějakou akční kartu z ruky.
+
+	\item \card{Kletba zabouchnutých dveří}[1] Po následující \timecursedoorduration/ platí, že kdykoliv chtějí hledači projít dveřmi do/z budovy či dopravního prostředku, musí uspět hod \textbf{1d20, DC 9}. Neuspějí-li, nesmí do/z daného prostoru projít, a to ani jinými dveřmi. Po uplynutí \timecursedoorreattempt/ se mohou pokusit uspět znovu.
+
+		\cost odhoď libovolnou kartu z ruky.
+
+	\item \card{Kletba exotické kuchyně}[1] Zahraj ve chvíli, kdy jsi uvnitř restaurace podávající explicitně kuchyni z jistého cizího státu. Hledači pak nesmí položit další otázku do chvíle, kdy najdou restauraci podávající kuchyni ze státu, jehož vzdálenost od České Republiky je větší či rovna.
+
+	\item \card{Kletba vymytého mozku}[1] Vyber tři otázky různých typů. Hledači nesmí do konce hry tyto otázky položit.
+
+		\cost odhoď všechny karty z ruky.
+
+	\item \card{Kletba ztraceného turisty}[1] Pošli hledačům nepřiblížený obrázek ze streetview libovolné mapové služby. Snímek musí být rovnoběžný s horizontem a musí obsahovat alespoň jednu lidmi vytvořenou strukturu jinou než silnici či cestu. Daná lokace musí být vzdálena nejvýše \dist.25mi od současné pozice hledačů.
+
+		Hledači musí bez použití digitální technologie dojít na dané místo a poslat ti fotku pro ověření. Dokud není kletba splněna, hledači nesmí položit žádnou otázku ani použít dopravní prostředek.
+
+		\cost Hledači se musí nacházet venku.
+
+	\item \card{Kletba mohyly} Od chvíle, kdy tuto kartu zahraješ, máš jeden pokus na to, abys postavil mohylu lineárně uspořádaných kamenů. ...
+
+	\item \card{Kletba nohou hazardního hráče}[1] Během následujících \timecursegambler/, kdykoliv chtějí hledači jít jakýmkoliv směrem, musí hodit 1d8. Následně mohou udělat pouze tolik kroků, kolik padlo. Pak mohou házet znovu.
+
+\end{cards}
 
 \section{Modifikace pro hru ve více týmech}\label{týmy}
 
