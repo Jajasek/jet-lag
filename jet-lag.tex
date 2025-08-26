@@ -33,6 +33,8 @@
 \def\timecursehangmancooldown/{5 minut}  % 10 min
 \def\timecursetumblehit/{10 minut}  % 15 min
 \def\timecurseturnright/{30 minut}  % 1 h
+\def\timecursecensustaker/{15 minut}  % 30 min
+\def\timecursebirdguide/{15 minut}  % 15 min
 
 \def\dist#1mi{%
 	\begin{switch}{#1}%
@@ -75,7 +77,7 @@
 	\item lanovka a
 	\item vlak v úseku, na kterém je platný roční kupón PID pro pásmo P.
 \end{itemize}
-V průběhu hry nesmí hráči používat žádné jiné dopravní prostředky. Zároveň se musí pohybovat pouze na \textbf{veřejných místech}, jež jsou a budou volně přístupná po celou dobu hry. (Toto pravidlo mohou hledači porušit, vyžaduje-li to výslovně kletba, viz sekci \ref{kletby})
+V průběhu hry nesmí hráči používat žádné jiné dopravní prostředky. Zároveň se musí pohybovat pouze na \textbf{veřejných místech}, jež jsou a budou volně a zdarma přístupná po celou dobu daného kola. (Toto pravidlo mohou hledači porušit, vyžaduje-li to výslovně kletba, viz sekci \ref{kletby})
 
 Hráči začínají hru u vstupu do stanice metra Florenc.
 
@@ -197,11 +199,11 @@ Linka povoleného dopravního prostředku
 
 Hledači určí poloměr kruhu okolo jejich aktuální pozice a třídu objektů v tomto kruhu, a to z následujícího seznamu možností. Pokud je skrývač v jimi určeném kruhu, sdělí jim, který z těchto objektů je mu nejbližší. Není-li v daném kruhu, tuto skutečnost hledačům sdělí namísto odpovědi.
 
-\dist1mi: kostely, muzea, kina, 
+\dist1mi: kostely, muzea, kina,
 
-\dist15mi: budovy Matfyzu, smyčky tramvají(?), , 
+\dist15mi: budovy Matfyzu, smyčky tramvají(?), ,
 
-(Originál 15mi: zábavní park, zoo, akvárium, linka metra)
+(Originál 15mi: zábavní park, zoo, akvárium, linka metra; 1mi: muzeum, )
 
 \subsection{Fotografie}
 
@@ -219,7 +221,7 @@ Bod země vypadající nejvýše ze schovávačovy nejbližší zastávky povole
 Nejbližší McDonald's, existuje-li takový v zóně skrývání
 nejširší ulice v zóně skrývání
 Most
-Lidmi vytvořená struktura vypadající nejvyšší z takové zastávky některého z povolených dopravních prostředků, která je schovávačovi v tomto okamžiku nejblíž
+Lidmi vytvořená struktura vypadající nejvyšší z takové zastávky některého z povolených dopravních prostředků, která je schovávačovi v tomto okamžiku nejblíž. Tuto budovu je však možno vyfotit odkudkoli ze zóny skrývání.
 ?
 Nejbližší obchod s potravinami
 Nejbližší nástupiště povoleného dopravního prostřeku
@@ -264,16 +266,22 @@ Tyto karty nelze zahrát. Po skončení kola se k celkovému času přičte hodn
 	\card{Duplikát} V okamžiku, kdy hraješ tuto kartu, zvol jinou kartu ze své ruky. Tato karta má efekt zvolené karty.
 
 		Máš-li tuto kartu v ruce na konci kola, můžeš zduplikovat libovolný časový bonus.
+
+	\card{Lízni kartu a zvyš kapacitu ruky o 1}[1]
 \end{cards}
 
 \subsection{Kletby}\label{kletby}
 
 \begin{cards}
-	\card{Kletba všímavého spotřebitele}[1] Hledači musí zakoupit produkt či získat vstup na lokaci, na niž viděli reklamu. Tato reklama musí být nalezena v \textbf{reálném světě} (nikoliv na digitálním zařízení hledače) a musí být od samotného produktu či lokace vzdálena alespoň 30m. Dokud není kletba splněna, hledači nesmí položit \textbf{žádnou otázku}.
+	\card{Kletba všímavého spotřebitele}[1] Hledači musí zakoupit produkt či získat vstup na lokaci, na niž viděli reklamu. Tato reklama musí být nalezena v \textbf{reálném světě} (nikoliv na digitálním zařízení hledače) a musí být od samotného produktu či lokace vzdálena alespoň 100m. Dokud není kletba splněna, hledači nesmí položit \textbf{žádnou otázku}.
 
 		\cost následující otázka hledačů je zdarma.
 
-	\card{Kletba nezkušeného cestovatele}[1] Hraj, pokud hledači právě necestují dopravním prostředkem. Urči libovolnou veřejně dostupnou lokaci vzdálenou nejvýše \dist.5mi od hledačů. Ti tam musí dojít a strávit tam alespoň \timecursetravelvisit/. \textbf{Až poté mohou položit další otázku.}
+		\begin{reasoning}
+			Protože hrajeme v Praze, je tato kletba spíše lehká. Tak jsem se rozhodl alespoň trochu zvýšit limit vzdálenosti.
+		\end{reasoning}
+
+	\card{Kletba nezkušeného cestovatele}[1] Hraj, pokud hledači právě \textbf{necestují} dopravním prostředkem. Urči libovolnou veřejně dostupnou lokaci vzdálenou nejvýše \dist.5mi od hledačů. Ti tam musí dojít a strávit tam alespoň \timecursetravelvisit/. \textbf{Až poté mohou položit další otázku.}
 
 		Hledači ti musí z dané lokace přinést nějaký objekt jako \textbf{suvenýr}. Ztratí-li ho předtím, než ti ho předají, je ti udělen časový bonus \timecursetravelpenalty/.
 
@@ -309,7 +317,7 @@ Tyto karty nelze zahrát. Po skončení kola se k celkovému času přičte hodn
 
 	\card{Kletba zmrzlé tečky}[1] Hraj, pokud jsou od tebe hledači vzdáleni nejméně \dist10mi. Urči bod vzdálený alespoň \dist.5mi od aktuální pozice hledačů. Pokud přesně za \timecursedotcountdown/ budou ve vzdálenosti nejvýše \dist.25mi od daného bodu, nesmí se po následujících \timecursedotfreeze/ pohnout.
 
-	\card{Kletba ukrytého oběšence}[1] Hledači musí porazit skrývače ve hře \textbf{šibenice}. 
+	\card{Kletba ukrytého oběšence}[1] Hledači musí porazit skrývače ve hře \textbf{šibenice}.
 
 		Skrývač zvolí \textbf{libovolné spisovné české slovo}, hledači hádají písmena. Po \textbf{sedmi} neúspěšných pokusech prohrávají. Hraje se se standardní českou abecedou vyjma diakritiky, tj. \textbf{28 písmen}.
 
@@ -338,6 +346,22 @@ Tyto karty nelze zahrát. Po skončení kola se k celkovému času přičte hodn
 		\cost odhoď časový bonus z ruky.
 
 	\card{Kletba luxusního auta}[1] Vyfoť libovolné auto. Hledači pak musí vyfotit auto o stejné nebo vyšší pořizovací ceně. Do té doby nesmí položit \textbf{žádnou otázku}.
+
+	\card{Kletba černé díry}[1] Urči poloměr kruhu se středem v aktuální pozici hledačů. Tento poloměr musí být menší či roven \textbf{třem čtvrtinám jejich vzdálenosti od tebe}. Po zbytek kola platí, že kdykoliv jsou hledači uvnitř určeného kruhu, \textbf{nesmí pokládat otázky}.
+
+		\cost odhoď kletbu z ruky.
+
+		\begin{reasoning}
+			V původní hře byl poloměr pevně daný hodnotou 75mi, s podmínkou vzdálenosti alespoň 100mi mezi hledači a zónou skrývání. Přepočtená vzdálenost \dist100mi je však příliš velká a nemohl jsem se rozhodnout, jaká by byla adekvátní. Tak mě napadlo to udělat variabilní - čím silnější efekt skrývač použije, tím více informací o své poloze prozradí. Za tuto variabilitu však musí zaplatit další kletbou.
+		\end{reasoning}
+
+	\card{Kletba sčítače lidu}[1] Hraj, pokud hledači právě \textbf{necestují} dopravním prostředkem. Hledači musí okamžitě vyrazit nejrychlejší cestou k \textbf{radnici} té městské části, v níž se aktuálně nachází. Jakmile tam dorazí, musí \textbf{odhadnout počet obyvatel} této městské části, s přesností na \textbf{25\%}. Pokud je jejich odhad špatný, obdržíš bonus \timecursecensustaker/.
+
+		\cost následující otázka hledačů je zdarma.
+
+	\card{Kletba obratu}[1] Zahraj, pokud hledači právě cestují dopravním prostředkem, jehož následující stanice je od tebe \textbf{vzdálenější} než předešlá. Hledači musí na následující stanici \textbf{vystoupit} a poté, je-li to možné, se vrátit \textbf{stejnou linkou v opačném směru} o alespoň jednu zastávku.
+
+	\card{Kletba ptačího průvodce}[1] Když zahraješ tuto kartu, máš jeden pokus natočit co nejdelší \textbf{nepřetržitý záběr ptáka}. Točíš-li ptáků více zároveň, musíš se předem rozhodnout, \textbf{kterého} z nich sleduješ. Záběr končí, jakmile daný pták není viditelný ani na jediném pixelu, nebo jakmile jeho délka přesáhne \textbf{\timecursebirdguide/}. Hledači poté musí natočit záběr ptáka o stejné nebo větší délce. Dokud není kletba splněna, hledači nesmí položit \textbf{žádnou otázku}.
 \end{cards}
 
 \section{Modifikace pro hru ve více týmech}\label{týmy}
