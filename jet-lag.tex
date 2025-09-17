@@ -7,6 +7,14 @@
 \usepackage{xifthen}
 \usepackage{pifont}
 
+% If we are not using LuaTeX, we need to set up character encoding:
+\usepackage{iftex}
+\ifpdftex
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\fi
+
 
 \newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
 \newcommand{\case}[2]{#1 #2} % Dummy, so \renewcommand has something to overwrite...
