@@ -1,0 +1,35 @@
+Bonus 5 minut - 1 - 3 - 7 - 10 - 9 - 5
+Bonus 10 minut - 4 - 4 - 4 - 4 - 4 - 7
+Bonus 15 minut -  - 2 - 3 - 5 - 2 - 4
+Bonus 20 minut -  -  - 1 - 1 -  - 1
+Bonus 30 minut - 1 -  -  - 2 -  - 
+Veto -  - 2 -  - 1 -  - 2
+Přesun -  -  -  -  -  - 1
+Odhoď 1, dober si 2 -  -  - 2 - 3 -  - 5
+Odhoď 2, dober si 3 - 3 - 2 - 1 - 3 -  - 1
+Náhodná otázka - 1 - 1 - 2 - 2 -  - 1
+Duplikát -  - 1 - 1 -  - 1 - 
+Lízni kartu a zvyš kapacitu ruky o 1 -  -  - 1 - 1 -  - 
+Kletba všímavého spotřebitele - 1 -  - 1 -  -  - 
+Kletba nezkušeného cestovatele - 1 - 1 - 1 -  -  - 1
+Kletba Ransom note - 1 -  - 1 -  - 1 - 
+Kletba zabouchnutých dveří - 1 -  -  - 1 -  - 1
+Kletba citron - 1 -  - 1 -  -  - 1
+Kletba exotické kuchyně - 1 -  -  -  - 1 - 
+Kletba vymytého mozku - 1 -  -  -  -  - 1
+Kletba ztraceného turisty - 1 -  -  - 1 -  - 
+Kletba mohyly - 1 -  -  - 1 -  - 
+Kletba nohou hazardního hráče - 1 -  -  - 1 - 1 - 
+Kletba zmrzlé tečky -  - 1 - 1 -  - 1 - 
+Kletba ukrytého oběšence -  - 1 -  -  - 1 - 
+Kletba nekonečného kutálení -  -  - 1 - 1 -  - 
+Kletba zoologa -  -  - 1 - 1 -  - 1
+Kletba zatáčky vpravo -  -  - 1 -  -  - 
+Kletba mostního trolla -  -  -  - 1 -  - 1
+Kletba vypadávající paměti -  -  -  - 1 -  - 
+Kletba luxusního auta -  -  -  - 1 -  - 
+Kletba černé díry -  -  -  - 1 -  - 
+Kletba sčítače lidu -  -  -  - 1 -  - 1
+Kletba obratu -  -  -  - 1 -  - 
+Kletba ptačího průvodce -  -  -  -  - 1 - 1
+Kletba městského průzkumníka -  -  -  -  -  - 1
