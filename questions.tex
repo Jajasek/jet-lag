@@ -7,15 +7,15 @@ Kdykoliv otázka referuje na aktuální pozici skrývače, je tím myšlena jeho
 
 \begin{reasoning}
 	Oficiální verze hry je adaptovaná na celé Japonsko. Musíme tedy zmenšit používané vzdálenosti. Protože však chceme zmenšit oblast end-game docela málo, zatímco celkovou velikost jsme zmenšili hodně, zdá se přirozené namísto lineárního škálování použít logaritmické.
-	
+
 	Původní hra používá vzdálenosti $0.25mi$ až $100mi$, přičemž poloměr zóny skrývání je $0.5mi$. Použijme pro přepočtení vzdáleností funkci
 	\begin{equation*}
 		f_\alpha(x) = e^{\alpha\log(1+x)} - 1,\quad x \in [0, \infty)
 	\end{equation*}
 	pro nějaký faktor $\alpha > 0$. Všimněme si, že pro $\alpha$ splňující $f_\alpha(100mi) = 4km$ (kde $4km$ se zdá býti rozumný poloměr pro největší radar) dostáváme $f_\alpha(0.5mi) \simeq 210m$. To docela dobře odpovídá námi zvolenému poloměru zóny skrývání. Budu tedy používat tuto funkci, se zaokrouhlováním na rozumně použitelné vzdálenosti. (Pozn. dovolím si 1.77km i 2.24km zaokrouhlit na 2km.)
-	
+
 	Existuje však ještě jiný možný myšlenkový pochod. Protože hrajeme na menší ploše, dala by se nad naše hra připodobnit nějakému kratšímu intervalu původní hry, od jistého bodu do konce. V tomto kratším intervalu už jsou rozumně použitelné jen některé otázky z původní hry, konkrétně ty s menšími vzdálenostmi. Dávalo by tedy smysl namísto škálování prostě jen vypustit tu část otázek, jejichž měřítko neodpovídá našemu kontextu. To budiž předmětem debaty.
-	
+
 	Případně je možné zkombinovat oba přístupy.
 \end{reasoning}
 
