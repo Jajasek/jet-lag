@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Hide and Seek: Praha  %%%
+%%%  Množina otázek        %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Kdykoliv otázka referuje na aktuální pozici skrývače, je tím myšlena jeho poloha v tom okamžiku, ve kterém se skrývač \textbf{dozví} o položení dané otázky. Skrývač tedy \textbf{nemůže svou aktuální pozici přizpůsobit} právě položené otázce.
+
+\begin{reasoning}
+	Oficiální verze hry je adaptovaná na celé Japonsko. Musíme tedy zmenšit používané vzdálenosti. Protože však chceme zmenšit oblast end-game docela málo, zatímco celkovou velikost jsme zmenšili hodně, zdá se přirozené namísto lineárního škálování použít logaritmické.
+	
+	Původní hra používá vzdálenosti $0.25mi$ až $100mi$, přičemž poloměr zóny skrývání je $0.5mi$. Použijme pro přepočtení vzdáleností funkci
+	\begin{equation*}
+		f_\alpha(x) = e^{\alpha\log(1+x)} - 1,\quad x \in [0, \infty)
+	\end{equation*}
+	pro nějaký faktor $\alpha > 0$. Všimněme si, že pro $\alpha$ splňující $f_\alpha(100mi) = 4km$ (kde $4km$ se zdá býti rozumný poloměr pro největší radar) dostáváme $f_\alpha(0.5mi) \simeq 210m$. To docela dobře odpovídá námi zvolenému poloměru zóny skrývání. Budu tedy používat tuto funkci, se zaokrouhlováním na rozumně použitelné vzdálenosti. (Pozn. dovolím si 1.77km i 2.24km zaokrouhlit na 2km.)
+	
+	Existuje však ještě jiný možný myšlenkový pochod. Protože hrajeme na menší ploše, dala by se nad naše hra připodobnit nějakému kratšímu intervalu původní hry, od jistého bodu do konce. V tomto kratším intervalu už jsou rozumně použitelné jen některé otázky z původní hry, konkrétně ty s menšími vzdálenostmi. Dávalo by tedy smysl namísto škálování prostě jen vypustit tu část otázek, jejichž měřítko neodpovídá našemu kontextu. To budiž předmětem debaty.
+	
+	Případně je možné zkombinovat oba přístupy.
+\end{reasoning}
+
+\subsection{Porovnávání}
+
+\textbf{Cena:} Skrývač táhne 3 karty, z nichž si jednu vybere a zbytek odhodí.
+
+\textbf{Prototyp otázky:} Je, ve tvé aktuální pozici, tvůj \verb|<objekt>| stejný jako náš?
+
+Zde \verb|<objekt>| může být vybírán z následujícího seznamu:
+
+\begin{itemize}
+	\item nejbližší letiště (Uvažujeme 4 Pražská letiště: Václava Havla, Kbely, Letňany a Točná. Vzdálenost se počítá od nejbližšího bodu ranveje.)
+	\item Městská část
+	\item Nejbližší metro
+	\item První písmeno ulice
+	\item Nejbližší velvyslanectví
+	\item Břeh Vltavy
+	\item Nejbližší budova MFF UK
+\end{itemize}
+
+Dále tato kategorie obsahuje následující otázky:
+
+\begin{itemize}
+	\item Obsluhuje linka, jíž právě cestuji, zónu skrývání (dle definice v sekci \ref{skrývání})?
+	\item Je tvá aktuální nadmořská výška vyšší než moje?
+\end{itemize}
+
+
+\subsection{Měření}
+
+\textbf{Cena:} Skrývač táhne 3 karty, z nichž si jednu vybere a zbytek odhodí.
+
+\textbf{Prototyp otázky:} Jsi, na své aktuální pozici, ke tvému nejbližšímu \verb|<objektu>| blíže než my k našemu nejbližšímu?
+
+Zde \verb|<objekt>| může být vybírán z následujícího seznamu:
+
+\begin{itemize}
+	\item Letiště
+	\item Vltava
+	\item McDonald's
+	\item Metro
+	\item Dálnice
+	\item Linka povoleného dopravního prostředku
+	\item budova MFF UK
+\end{itemize}
+
+\subsection{Teploměr}
+
+\textbf{Cena:} Skrývač táhne 2 karty, z nichž si jednu vybere a druhou odhodí.
+
+Hledači oznámí skrývači, že jejich aktuální pozice je \textbf{začátkem teploměru} o délce zvolené ze seznamu níže. Poté na libovolné pozici, která \textbf{není blíže} počátku teploměru než je zvolená délka, mohou teploměr \textbf{ukončit}. Skrývač následně odpovídá na otázku: "Jsi v tuto chvíli blíže konci teploměru, než jeho začátku?"
+
+Možné vzdálenosti jsou:
+\begin{itemize}
+	\item \dist.5mi,
+	\item \dist5mi,
+	\item \dist15mi,
+	\item \dist50mi.
+\end{itemize}
+
+\subsection{Radar}
+
+\textbf{Cena:} Skrývač táhne 2 karty, z nichž si jednu vybere a druhou odhodí.
+
+\textbf{Prototyp otázky:} Je tvá aktuální vzdálenost k nám nejvýše \verb|<vzdálenost>|?
+
+Zde \verb|<vzdálenost>| může být vybírána z následujícího seznamu:
+\begin{itemize}
+	\item \dist.25mi,
+	\item \dist.5mi,
+	\item \dist1mi,
+	\item \dist3mi,
+	\item \dist5mi,
+	\item \dist10mi,
+	\item \dist25mi,
+	\item \dist50mi,
+	\item \dist100mi,
+	\item vzdálenost libovolně zvolená hledači.
+\end{itemize}
+
+\subsection{Chapadla}
+
+\textbf{Cena:} Skrývač táhne 4 karty, z nichž si 2 vybere a zbytek odhodí.
+
+Hledači určí \textbf{poloměr} kruhu se středem v jejich aktuální pozici a \textbf{třídu objektů} v tomto kruhu, a to z následujícího seznamu možností. Pokud je skrývač v jimi určeném kruhu, sdělí jim, \textbf{který} z těchto objektů je mu nejbližší. Není-li v daném kruhu, tuto skutečnost hledačům \textbf{sdělí namísto odpovědi}.
+
+\begin{itemize}
+	\item Pro kruh o poloměru \dist1mi lze volit třídy objektů:
+	\begin{itemize}
+		\item zastupitelské úřady (\href{https://cs.wikipedia.org/wiki/Seznam_zastupitelsk\%C3\%BDch_\%C3\%BA\%C5\%99ad\%C5\%AF_v_\%C4\%8Cesk\%C3\%A9_republice}{seznam lze nalézt zde}),
+		\item zastávky/stanice veškeré Pražské MHD (vzdálenost se počítá od nejbližšího bodu nástupiště povrchové dopravy či od nejbližšího vchodu do stanice metra),
+		\item obchody s potravinami,
+		\item lékárny.
+	\end{itemize}
+	\item Pro kruh o poloměru \dist15mi lze volit třídy objektů:
+	\begin{itemize}
+		\item fakulty UK (vzdálenost se počítá od nejbližší budovy dané fakulty),
+		\item smyčky tramvají (\href{https://mapy.com/s/fobosuzuzu}{mapa všech smyček je zde}),
+		\item mosty a lávky přes Vltavu,
+		\item pobočky Billa.
+	\end{itemize}
+\end{itemize}
+
+\subsection{Fotografie}
+
+\textbf{Cena:} Skrývač táhne 4 karty, z nichž si 2 vybere a zbytek odhodí.
+
+Skrývač pošle hledačům jednu fotografii, která obsahuje daný objekt z možností níže. Hledači nemají dovoleno pro lokalizaci fotografií cíleně používat fotky dostupné v mapách, na internetu apod. Mohou používat vlastní galerii.
+
+\begin{reasoning}
+	Přijde nám, že fotky nám prozradí obecně mnohem více informací než hráčům původní hry, neboť Praha pro nás zdaleka není neznámým místem. Navrhujeme je tedy zdražit na úroveň chapadel, abychom předešli Samovu \uv{Photos are cheap!}.
+\end{reasoning}
+
+Fotografie by měla být nějak rozumně nepřiblížená, podobně jako v originální sérii Hide And Seek: Japan. Fotka budovy musí obsahovat obě strany průmětu budovy a střechu.
+
+\begin{itemize}
+	\item Bod země vypadající nejvýše ze schovávačovy aktuálně nejbližší zastávky povoleného dopravního prostředku (tj. z libovolného nástupiště či mola povrchové dopravy, nebo z libovolného vchodu do stanice metra). Tento bod je nutné vyfotit z oné zastávky.
+	\item Nejbližší McDonald's, existuje-li takový v zóně skrývání. Fotka musí obsahovat alespoň jeden vchod a alespoň jeden poutač.
+	\item Nejširší ulice v zóně skrývání. Fotka musí obsahovat obě strany ulice.
+	\item Lidmi vytvořená struktura vypadající nejvyšší ze schovávačovy aktuálně nejbližší zastávky povoleného dopravního prostředku. Tuto budovu je však možno vyfotit odkudkoli ze zóny skrývání.
+	\item Nejbližší obchod s potravinami. Fotka musí obsahovat alespoň jeden vchod a alespoň jeden poutač.
+	\item Nejbližší nástupiště povoleného dopravního prostředku. Fotka musí obsahovat alespoň polovinu plochy nástupiště.
+	\item Lidmi vytvořená struktura vypadající nejvyšší ze schovávačovy současné pozice. Tuto strukturu je však možno vyfotit odkudkoli ze zóny skrývání.
+	\item 5 budov. Namísto běžného pravidla musí fotka obsahovat základnu a alespoň jedno patro každé z nich.
+	\item Selfie (tj. fotka obsahující celý obličej schovávače) ze schovávačovy současné pozice.
+	\item Obrys procházky o délce alespoň \dist.5mi, obsahující alespoň 4 zatáčky (?, původně 6).
+	\item Libovolný strom, je-li nějaký na dohled. Fotka musí být focena ze schovávačovy současné pozice a musí obsahovat celou korunu stromu.
+	\item Pohled přímo vzhůru. Fotka musí být focena ze schovávačovy současné pozice.
+	\item Tvar ulice, která je nejbližší schovávačově současné pozici.
+\end{itemize}
+
