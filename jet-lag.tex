@@ -6,6 +6,7 @@
 \usepackage{wasysym}
 \usepackage{xifthen}
 \usepackage{pifont}
+\usepackage{xcolor}
 
 % If we are not using LuaTeX, we need to set up character encoding:
 \usepackage{iftex}
@@ -14,6 +15,10 @@
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
 \fi
+
+% We want txfont for card symbols (https://tex.stackexchange.com/a/9642) without changing the math font (https://latex.org/forum/viewtopic.php?t=6262)
+\usepackage{txfonts}
+\usepackage{lmodern}
 
 
 \newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
@@ -37,7 +42,16 @@
 }
 \newcommand{\cost}{\textbf{Cena za seslání: }}
 
+% Various symbol definitions
 \def\cross{\ding{55}}
+\def\srdceplne{\textcolor{red}{\ensuremath{\varheartsuit}}}
+\def\srdceprazdne{\textcolor{red}{\ensuremath{\heartsuit}}}
+\def\karyplne{\textcolor{red}{\ensuremath{\vardiamondsuit}}}
+\def\karyprazdne{\textcolor{red}{\ensuremath{\diamondsuit}}}
+\def\pikyplne{\ensuremath{\spadesuit}}
+\def\pikyprazdne{\ensuremath{\varspadesuit}}
+\def\krizeplne{\ensuremath{\clubsuit}}
+\def\krizeprazdne{\ensuremath{\varclubsuit}}
 
 \def\timehiding/{45 minut}  % 3.5h
 \def\timehidingmove/{15 minut}  % 1 h
