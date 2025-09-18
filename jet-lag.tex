@@ -17,8 +17,8 @@
 \fi
 
 % We want txfont for card symbols (https://tex.stackexchange.com/a/9642) without changing the math font (https://latex.org/forum/viewtopic.php?t=6262)
-\usepackage{txfonts}
-\usepackage{lmodern}
+%\usepackage{txfonts}
+%\usepackage{lmodern}
 
 
 \newcommand{\ifequals}[3]{\ifthenelse{\equal{#1}{#2}}{#3}{}}
@@ -44,14 +44,23 @@
 
 % Various symbol definitions
 \def\cross{\ding{55}}
-\def\srdceplne{\textcolor{red}{\ensuremath{\varheartsuit}}}
-\def\srdceprazdne{\textcolor{red}{\ensuremath{\heartsuit}}}
-\def\karyplne{\textcolor{red}{\ensuremath{\vardiamondsuit}}}
-\def\karyprazdne{\textcolor{red}{\ensuremath{\diamondsuit}}}
-\def\pikyplne{\ensuremath{\spadesuit}}
-\def\pikyprazdne{\ensuremath{\varspadesuit}}
-\def\krizeplne{\ensuremath{\clubsuit}}
-\def\krizeprazdne{\ensuremath{\varclubsuit}}
+%\def\srdceplne{\textcolor{red}{\ensuremath{\varheartsuit}}}
+%\def\srdceprazdne{\textcolor{red}{\ensuremath{\heartsuit}}}
+%\def\karyplne{\textcolor{red}{\ensuremath{\vardiamondsuit}}}
+%\def\karyprazdne{\textcolor{red}{\ensuremath{\diamondsuit}}}
+%\def\pikyplne{\ensuremath{\spadesuit}}
+%\def\pikyprazdne{\ensuremath{\varspadesuit}}
+%\def\krizeplne{\ensuremath{\clubsuit}}
+%\def\krizeprazdne{\ensuremath{\varclubsuit}}
+\newcommand{\cardsymbol}[2]{\textcolor{#1}{\ensuremath{#2}}}
+\newcommand{\srdcer}{\cardsymbol{red}{\heartsuit}}
+\newcommand{\karyr}{\cardsymbol{red}{\diamondsuit}}
+\newcommand{\pikyr}{\cardsymbol{red}{\spadesuit}}
+\newcommand{\krizer}{\cardsymbol{red}{\clubsuit}}
+\newcommand{\srdceb}{\cardsymbol{blue}{\heartsuit}}
+\newcommand{\karyb}{\cardsymbol{blue}{\diamondsuit}}
+\newcommand{\pikyb}{\cardsymbol{blue}{\spadesuit}}
+\newcommand{\krizeb}{\cardsymbol{blue}{\clubsuit}}
 
 \def\timehiding/{45 minut}  % 3.5h
 \def\timehidingmove/{15 minut}  % 1 h
