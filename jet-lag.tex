@@ -144,6 +144,10 @@ Hra probíhá v několika kolech, jejichž počet hráči určí na začátku hr
 
 Pro každé kolo je určen jeden z hráčů, který bude \textbf{skrývačem}. Ostatní hráči zaujmou roli \textbf{hledačů}. Při větším počtu hráčů se hledači mohou rozdělit do \textbf{týmů} (po dvou až třech osobách), pro modifikaci pravidel v takovém případě viz sekci \ref{týmy}. Rozdělení hráčů by mělo být předem určeno pro všechna kola.
 
+Otázka: čím víš si to čtu tím větší si myslím že by bála zábava kdyby byly dva skrývači (Pokud to počet hráčů povolí). Přijde mi že ten aspekt hry se více užije když tak je někdo s tebou. 
+Taky spousta věcí vyžaduje internet a co si pamatuju tak pouze jeden z nás má neomezený internet.
+Doufám že ostatní mají alespoň neomezené volání a SMS
+
 Skrývač prvního kola obdrží \textbf{balíček karet} (viz sekci \ref{karty}), každý tým hledačů má mapu herního plánu.
 
 Během hry by se tým hledačů neměl rozdělit, je považován za jedinou entitu.
@@ -157,9 +161,14 @@ Skrývač má \textbf{\timehiding/} na to, aby se přesunul na pozici dle libost
 \end{itemize}
 Od této chvíle nemá skrývač povoleno opustit svou zónu skrývání.
 
+Otázka: co se stane když jsem v dopravním prostředku po uplynutí 45 min a ten mně odveze dále než 200 metrů?
+
+
 \section{Druhá fáze kola: hledání}
 
 Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyráží ze stejné počáteční pozice jako skrývač a jejich cílem je co nejdříve skrývače fyzicky najít, přičemž ten má po celou dobu informaci o jejich aktuální poloze (v přesnosti, kterou technologie dovolí). Informace o jeho poloze mohou získávat kladením \textbf{otázek} z množiny uvedené v sekci \ref{otázky}. Skrývač musí na každou otázku odpovědět do \textbf{\timeanswerquestion/}, a to \textbf{pravdivě}.
+
+Otázka: je nějaký důvod proč by neměl skrývač vždy čekat 10 minut na zodpovězení otázky? Neměl by se spíše v tomto momentu stopnout časovat pro hledače dokud skrývač neodpoví?
 
 \begin{reasoning}
 	Pohráváme si i s myšlenkou, že by skrývač mohl čas od času lhát. Konkrétně z každých tří (nebo čtyř, bude třeba vyzkoušet) po sobě jdoucích odpovědí by mohla být nejvýše jedna nepravdivá. Více týmů by se uvažovalo odděleně. Za nepravdivou odpověď by skrývač nedostal odměnu.
@@ -180,6 +189,9 @@ Kolo končí ve chvíli, kdy se hledači dotknou skrývače. Hráči si poznamen
 Není-li toto poslední kolo hry, okamžitě začíná fáze skrývání dalšího kola. Dosavadní skrývač předá balíček karet novému skrývači a ten začíná svou fázi skrývání na aktuální pozici všech.
 
 Naopak je-li toto kolo poslední, hra končí. Vítězem je hráč, který v roli skrývače dosáhl nejdelšího času ze všech kol.
+
+Otázka: jelikož se další kola začínají od pozice posledního schovaného tak má první hráč největší výhodu jelikož má nejvíce možností. Když se pak někdo schová řekněme na konečné tak další hráč nemá na výběr než jet jediným spojem a toho značně využít hledači
+
 
 \section{Množina otázek}\label{otázky}
 
