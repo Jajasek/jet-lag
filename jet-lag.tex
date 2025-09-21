@@ -161,14 +161,24 @@ Skrývač má \textbf{\timehiding/} na to, aby se přesunul na pozici dle libost
 \end{itemize}
 Od této chvíle nemá skrývač povoleno opustit svou zónu skrývání.
 
-Otázka: co se stane když jsem v dopravním prostředku po uplynutí 45 min a ten mně odveze dále než 200 metrů?
+\begin{reasoning}
+	\textbf{Marek:} co se stane když jsem v dopravním prostředku po uplynutí 45 min a ten mně odveze dále než 200 metrů?
+	
+	\textbf{Jáchym:} Musíme se dohodnout, jak řešit obecně situaci, kdy skrývač proti své vůli opustí zónu skrývání. Navrhuji tvrdý postih - okamžitý konec jeho kola s nulovým časem skrývání. Případně by šlo prostě jen požadovat, ať se co nejrychleji vrátí do zóny skrývání.
+\end{reasoning}
 
 
 \section{Druhá fáze kola: hledání}
 
 Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyráží ze stejné počáteční pozice jako skrývač a jejich cílem je co nejdříve skrývače fyzicky najít, přičemž ten má po celou dobu informaci o jejich aktuální poloze (v přesnosti, kterou technologie dovolí). Informace o jeho poloze mohou získávat kladením \textbf{otázek} z množiny uvedené v sekci \ref{otázky}. Skrývač musí na každou otázku odpovědět do \textbf{\timeanswerquestion/}, a to \textbf{pravdivě}.
 
-Otázka: je nějaký důvod proč by neměl skrývač vždy čekat 10 minut na zodpovězení otázky? Neměl by se spíše v tomto momentu stopnout časovat pro hledače dokud skrývač neodpoví?
+\begin{reasoning}
+	\textbf{Marek:} je nějaký důvod proč by neměl skrývač vždy čekat 10 minut na zodpovězení otázky? Neměl by se spíše v tomto momentu stopnout časovat pro hledače dokud skrývač neodpoví?
+	
+	\textbf{Jáchym:} Pravda, že moc důvodů pro to není. Toto pravidlo jsme prostě převzali z originálu. V originální hře myslím skrývač nikdy během odpovídání na otázku nehrál kletby, zahrál je vždy až současně s poskytnutím odpovědi - to občas dávalo motivaci odpovědět rychle. Nevím, jestli to měli jako pevné pravidlo, a nevím, zda ho chceme zavést. Stopovat neustále časovač se mi však nechce, to by mohl být problém z hlediska synchronizace ve chvíli, kdy vypadne internet. A taky by to bylo otravné. Taky nechci dávat žádné pravidlo ve smyslu, že musí odpovědět co nejdřív - pak by čas trvání odpovědi dal hledačům informace.
+	
+	Popravdě - co je špatného na tom, mít u všech otázek desetiminutový timeout? Fér to bude a víme, že to generuje zajímavé situace (např. když se rozhoduješ, zda za minutu nastoupit na tramvaj, tak nemáš čas čekat na odpověď).
+\end{reasoning}
 
 \begin{reasoning}
 	Pohráváme si i s myšlenkou, že by skrývač mohl čas od času lhát. Konkrétně z každých tří (nebo čtyř, bude třeba vyzkoušet) po sobě jdoucích odpovědí by mohla být nejvýše jedna nepravdivá. Více týmů by se uvažovalo odděleně. Za nepravdivou odpověď by skrývač nedostal odměnu.
@@ -190,7 +200,11 @@ Není-li toto poslední kolo hry, okamžitě začíná fáze skrývání další
 
 Naopak je-li toto kolo poslední, hra končí. Vítězem je hráč, který v roli skrývače dosáhl nejdelšího času ze všech kol.
 
-Otázka: jelikož se další kola začínají od pozice posledního schovaného tak má první hráč největší výhodu jelikož má nejvíce možností. Když se pak někdo schová řekněme na konečné tak další hráč nemá na výběr než jet jediným spojem a toho značně využít hledači
+\begin{reasoning}
+	\textbf{Marek:} jelikož se další kola začínají od pozice posledního schovaného tak má první hráč největší výhodu jelikož má nejvíce možností. Když se pak někdo schová řekněme na konečné tak další hráč nemá na výběr než jet jediným spojem a toho značně využít hledači
+	
+	\textbf{Jáchym:} Toto je pravda. Myslím si však, že to není až tak hrozné. Hledači totiž vždycky začínají na stejném místě jako skrývač - takže když je to odlehlejší místo, tak to znesnadní práci i jim. Budou totiž klást otázky méně efektivně. To je ostatně vidět i v originální sérii.
+\end{reasoning}
 
 
 \section{Množina otázek}\label{otázky}
