@@ -63,6 +63,7 @@
 \newcommand{\krizeb}{\cardsymbol{blue}{\clubsuit}}
 
 \def\timehiding/{45 minut}  % 3.5h
+\def\timepenalty/{15 minut}
 \def\timehidingmove/{15 minut}  % 1 h
 \def\timeanswerquestion/{10 minut}  % photo: 15 min
 \def\timecursetravelvisit/{5 minut}  % 10 min
@@ -144,9 +145,13 @@ Hra probíhá v několika kolech, jejichž počet hráči určí na začátku hr
 
 Pro každé kolo je určen jeden z hráčů, který bude \textbf{skrývačem}. Ostatní hráči zaujmou roli \textbf{hledačů}. Při větším počtu hráčů se hledači mohou rozdělit do \textbf{týmů} (po dvou až třech osobách), pro modifikaci pravidel v takovém případě viz sekci \ref{týmy}. Rozdělení hráčů by mělo být předem určeno pro všechna kola.
 
-Otázka: čím víš si to čtu tím větší si myslím že by bála zábava kdyby byly dva skrývači (Pokud to počet hráčů povolí). Přijde mi že ten aspekt hry se více užije když tak je někdo s tebou. 
-Taky spousta věcí vyžaduje internet a co si pamatuju tak pouze jeden z nás má neomezený internet.
-Doufám že ostatní mají alespoň neomezené volání a SMS
+\begin{reasoning}
+	\textbf{Marek:} čím víš si to čtu tím větší si myslím že by bála zábava kdyby byly dva skrývači (Pokud to počet hráčů povolí). Přijde mi že ten aspekt hry se více užije když tak je někdo s tebou.
+	Taky spousta věcí vyžaduje internet a co si pamatuju tak pouze jeden z nás má neomezený internet.
+	Doufám že ostatní mají alespoň neomezené volání a SMS
+
+	\textbf{Jáchym a Žanet:} Klidně to povolme, dohodnou-li se skrývači tak.
+\end{reasoning}
 
 Skrývač prvního kola obdrží \textbf{balíček karet} (viz sekci \ref{karty}), každý tým hledačů má mapu herního plánu.
 
@@ -159,14 +164,23 @@ Skrývač má \textbf{\timehiding/} na to, aby se přesunul na pozici dle libost
 	\item zóna skrývání musí obsahovat alespoň jeden vchod do některé stanice metra, nebo
 	\item se musí dotýkat alespoň jednoho nástupiště, respektive mola povoleného dopravního prostředku povrchové dopravy.
 \end{itemize}
-Od této chvíle nemá skrývač povoleno opustit svou zónu skrývání.
+Od této chvíle nemá skrývač povoleno opustit svou zónu skrývání. (Můžeme povolit akutní technické výjimky - například návštěva toalety v blízkosti zóny skrývání, není-li vhodné místo uvnitř zóny. O každém takovém opuštění by však měl skrývač hledače alespoň hrubě informovat.)
 
 \begin{reasoning}
 	\textbf{Marek:} co se stane když jsem v dopravním prostředku po uplynutí 45 min a ten mně odveze dále než 200 metrů?
-	
+
 	\textbf{Jáchym:} Musíme se dohodnout, jak řešit obecně situaci, kdy skrývač proti své vůli opustí zónu skrývání. Navrhuji tvrdý postih - okamžitý konec jeho kola s nulovým časem skrývání. Případně by šlo prostě jen požadovat, ať se co nejrychleji vrátí do zóny skrývání.
 \end{reasoning}
 
+\subsection{Důsledky porušení pravidel}
+
+Může se stát, že následkem nepředvídatelných okolností (např. náhlé zpoždění spoje) se skrývač nestihne během fáze skrývání dostat na jím vysněnou pozici. I přesto se však zóna skrývání deklaruje \textbf{přesně} po uplynutí \timehiding/ od okamžiku začátku skrývání, avšak s následující výjimkou. Pokud by deklarovaná zóna skrývání nebyla obsluhována žádným z povolených dopravních prostředků, je namísto toho jako střed zóny skrývání považována zastávka, na níž se skrývač naposledy vyskytoval.
+
+Nastane-li situace, že je skrývač následkem nepředvídatelné události proti jeho vůli odvezen dopravním prostředkem mimo zónu skrývání, musí se do ní co nejrychleji vrátit. Zároveň je povinen o této skutečnosti informovat hledače. Tato situace může nastat například v důsledku aplikace předchozího odstavce, či v případě, že se zóna sice validně deklaruje mezi zastávkami dopravního prostředku, kterým skrývač cestuje, avšak on nemá možnost vystoupit před jejím opuštěním.
+
+Při nutnosti použití pravidel této sekce či jiného obdobného opravení hry je od celkového času hledání odečtena penalizace \timepenalty/, a to za každý takový incident.
+
+Tato pravidla není dovoleno vědomě zneužívat. Jejich účelem je pouze opravení hry během nepředvídatelných událostí nezávislých na vůli hráčů.
 
 \section{Druhá fáze kola: hledání}
 
@@ -174,9 +188,9 @@ Okamžitě po skončení fáze skrývání je spuštěn časovač. Hledači vyr�
 
 \begin{reasoning}
 	\textbf{Marek:} je nějaký důvod proč by neměl skrývač vždy čekat 10 minut na zodpovězení otázky? Neměl by se spíše v tomto momentu stopnout časovat pro hledače dokud skrývač neodpoví?
-	
+
 	\textbf{Jáchym:} Pravda, že moc důvodů pro to není. Toto pravidlo jsme prostě převzali z originálu. V originální hře myslím skrývač nikdy během odpovídání na otázku nehrál kletby, zahrál je vždy až současně s poskytnutím odpovědi - to občas dávalo motivaci odpovědět rychle. Nevím, jestli to měli jako pevné pravidlo, a nevím, zda ho chceme zavést. Stopovat neustále časovač se mi však nechce, to by mohl být problém z hlediska synchronizace ve chvíli, kdy vypadne internet. A taky by to bylo otravné. Taky nechci dávat žádné pravidlo ve smyslu, že musí odpovědět co nejdřív - pak by čas trvání odpovědi dal hledačům informace.
-	
+
 	Popravdě - co je špatného na tom, mít u všech otázek desetiminutový timeout? Fér to bude a víme, že to generuje zajímavé situace (např. když se rozhoduješ, zda za minutu nastoupit na tramvaj, tak nemáš čas čekat na odpověď).
 \end{reasoning}
 
@@ -202,7 +216,7 @@ Naopak je-li toto kolo poslední, hra končí. Vítězem je hráč, který v rol
 
 \begin{reasoning}
 	\textbf{Marek:} jelikož se další kola začínají od pozice posledního schovaného tak má první hráč největší výhodu jelikož má nejvíce možností. Když se pak někdo schová řekněme na konečné tak další hráč nemá na výběr než jet jediným spojem a toho značně využít hledači
-	
+
 	\textbf{Jáchym:} Toto je pravda. Myslím si však, že to není až tak hrozné. Hledači totiž vždycky začínají na stejném místě jako skrývač - takže když je to odlehlejší místo, tak to znesnadní práci i jim. Budou totiž klást otázky méně efektivně. To je ostatně vidět i v originální sérii.
 \end{reasoning}
 
